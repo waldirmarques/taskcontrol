@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: shadersdesign-api
+  jpa:
+    show-sql: false
+    open-in-view: true
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    url: jdbc:postgresql://localhost:5432/taskcontrol-db
+    username: postgres
+    password: postgres
+  jackson:
+    property-naming-strategy: LOWER_CAMEL_CASE
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+security:
+  jwt:
+    token:
+      secret-key: WnEivrF49893BxFs98mbvE
+      expire-length: 604800000 #1 week
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: INFO
