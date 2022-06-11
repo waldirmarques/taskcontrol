@@ -27,7 +27,7 @@
             <column name="priority_level" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="task_status" type="varchar(50)">
+            <column name="task_status" type="int">
                 <constraints nullable="false"/>
             </column>
         </createTable>

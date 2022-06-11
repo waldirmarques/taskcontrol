@@ -31,7 +31,7 @@ public class Task {
     private Long frequency;
     private Integer priorityLevel;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private TaskStatus taskStatus;
 
     public static Task from(TaskCreateDTO taskCreateDTO) {
