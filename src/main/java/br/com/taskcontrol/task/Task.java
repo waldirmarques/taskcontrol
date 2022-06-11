@@ -1,5 +1,6 @@
 package br.com.taskcontrol.task;
 
+import br.com.taskcontrol.task.dto.TaskCreateDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,4 +33,13 @@ public class Task {
 
     @Enumerated(EnumType.STRING)
     private TaskStatus taskStatus;
+
+    public static Task from(TaskCreateDTO taskCreateDTO) {
+        return Task.builder()
+                .title(taskCreateDTO.getTitle())
+                .frequency(taskCreateDTO.getFrequency())
+                .priorityLevel(taskCreateDTO.getPriorityLevel())
+                .taskStatus(TaskStatus.PENDING)
+                .build();
+    }
 }
