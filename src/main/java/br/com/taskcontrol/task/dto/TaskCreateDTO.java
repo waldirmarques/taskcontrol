@@ -14,4 +14,5 @@ public class TaskCreateDTO {
     private String title;
     private Long frequency;
     private Integer priorityLevel;
+    private Long duration;
 }

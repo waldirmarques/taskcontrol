@@ -19,6 +19,7 @@ public class TaskListDTO {
     private Long frequency;
     private Integer priorityLevel;
     private TaskStatus taskStatus;
+    private Long duration;
 
     public static TaskListDTO from(Task task) {
         return TaskListDTO.builder()
@@ -27,6 +28,7 @@ public class TaskListDTO {
                 .frequency(task.getFrequency())
                 .priorityLevel(task.getPriorityLevel())
                 .taskStatus(task.getTaskStatus())
+                .duration(task.getDuration())
                 .build();
     }
 }

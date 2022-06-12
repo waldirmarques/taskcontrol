@@ -33,6 +33,7 @@ public class Task {
 
     @Enumerated(EnumType.ORDINAL)
     private TaskStatus taskStatus;
+    private Long duration;
 
     public static Task from(TaskCreateDTO taskCreateDTO) {
         return Task.builder()
@@ -40,6 +41,7 @@ public class Task {
                 .frequency(taskCreateDTO.getFrequency())
                 .priorityLevel(taskCreateDTO.getPriorityLevel())
                 .taskStatus(TaskStatus.PENDING)
+                .duration(taskCreateDTO.getDuration())
                 .build();
     }
 }

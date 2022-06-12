@@ -3,6 +3,7 @@ package br.com.taskcontrol;
 import br.com.taskcontrol.task.dto.TaskCreateDTO;
 import br.com.taskcontrol.task.dto.TaskListDTO;
 import br.com.taskcontrol.task.service.CreateTaskService;
+import br.com.taskcontrol.task.service.GetListTaskPendingService;
 import br.com.taskcontrol.task.service.GetListTaskService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ public class TaskController {
 
     private final CreateTaskService createTaskService;
     private final GetListTaskService getListTaskService;
+    private final GetListTaskPendingService getListTaskPendingService;
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -33,5 +35,10 @@ public class TaskController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TaskListDTO> listTask() {
         return getListTaskService.listTask();
+    }
+
+    @GetMapping(value = "/pending", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<TaskListDTO> listTaskPending() {
+        return getListTaskPendingService.listTaskPending();
     }
 }
