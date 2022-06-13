@@ -1,5 +1,6 @@
 package br.com.taskcontrol.task;
 
+import br.com.taskcontrol.project.Project;
 import br.com.taskcontrol.task.dto.TaskCreateDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +14,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import java.time.LocalDateTime;
 
@@ -36,6 +39,10 @@ public class Task {
     private TaskStatus taskStatus;
     private Long duration;
     private LocalDateTime createDate;
+
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
 
     public static Task from(TaskCreateDTO taskCreateDTO) {
         return Task.builder()
