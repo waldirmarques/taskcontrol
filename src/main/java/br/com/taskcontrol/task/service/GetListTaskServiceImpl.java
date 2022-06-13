@@ -3,7 +3,6 @@ package br.com.taskcontrol.task.service;
 import br.com.taskcontrol.task.TaskRepository;
 import br.com.taskcontrol.task.dto.TaskListDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +15,7 @@ public class GetListTaskServiceImpl implements GetListTaskService {
     private final TaskRepository taskRepository;
     @Override
     public List<TaskListDTO> listTask() {
-        return taskRepository.findAll(Sort.by(Sort.Direction.ASC, "taskStatus"))
+        return taskRepository.findAllByOrderByTaskStatusAsc()
                 .stream()
                 .map(TaskListDTO::from)
                 .collect(Collectors.toList());

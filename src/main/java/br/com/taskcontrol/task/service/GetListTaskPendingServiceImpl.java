@@ -23,7 +23,7 @@ public class GetListTaskPendingServiceImpl implements GetListTaskPendingService 
 
         for (Task task : taskRepository.findAllByTaskStatusOrderByPriorityLevelDesc(TaskStatus.PENDING)) {
             somaDuration += task.getDuration();
-            if (somaDuration <= 120) {
+            if (somaDuration <= 7200) { //2h
                 taskArrayList.add(TaskListDTO.from(task));
             }
         }

@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -34,6 +35,7 @@ public class Task {
     @Enumerated(EnumType.ORDINAL)
     private TaskStatus taskStatus;
     private Long duration;
+    private LocalDateTime createDate;
 
     public static Task from(TaskCreateDTO taskCreateDTO) {
         return Task.builder()
@@ -42,6 +44,7 @@ public class Task {
                 .priorityLevel(taskCreateDTO.getPriorityLevel())
                 .taskStatus(TaskStatus.PENDING)
                 .duration(taskCreateDTO.getDuration())
+                .createDate(LocalDateTime.now())
                 .build();
     }
 }
